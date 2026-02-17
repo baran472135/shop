@@ -1,0 +1,22 @@
+<div class="row">
+  @for (product of products; track product.id) {
+    <div class="col-12 col-sm-6 col-md-4 mb-4">
+      <div class="list-group">
+        <div class="card h-100">
+          <img [src]="product.imageUrl" class="card-img-top product-img" alt="{{ product.name }}">
+          <div class="card-body">
+            <p class="card-text">{{ product.description }}</p>
+            <p class="fw-bold">{{ product.price }} TL</p>
+            <a href="#" class="btn btn-primary">Detaylar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  } @empty {
+    <div class="col-12">
+      <div class="alert alert-warning">
+        Listelenecek ürün bulunamadi.
+      </div>
+    </div>
+  }
+</div>
