@@ -3,13 +3,12 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <form class="d-flex" role="search">
         <input 
-          [(ngModel)]="productServices.filterText" 
-          name="filterText" 
-          class="form-control me-2" 
-          type="search" 
-          placeholder="Ürün ara..." 
-          aria-label="Search">
-        <button class="btn btn-outline-success" type="button">Ara</button>
+          type="search"
+          class="form-control me-2"
+          placeholder="Ürün ara..."
+          aria-label="Search"
+          [value]="searchTerm"
+          (input)="onSearch($event)">
       </form>
     </div>
   </div>

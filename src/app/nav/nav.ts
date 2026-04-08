@@ -1,14 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ProductService } from '../services/product'; // .service sildik!
+import { ProductService } from '../services/product';
 
 @Component({
   selector: 'app-nav',
-  templateUrl: './nav.html',
   standalone: true,
+  templateUrl: './nav.html',
   imports: [FormsModule]
 })
 export class Nav {
-  filterText: string = ""; 
-  constructor(public productServices: ProductService) {}
+  private productService = inject(ProductService);
+
+  get searchTerm(): string {
+    return this.productService.searchTerm();
+  }
+
+  onSearch(event: Event) {
+    const input = event.target as HTMLInputElement;
+    this.productService.updateSearch(input.value);
+  }
 }
